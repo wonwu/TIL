@@ -14,10 +14,10 @@
 
 |계층 | OSI 7계층     | 전송단위 |   장비       |   프로토콜            | 기능   |
 ---|------------------|---------|-------------|----------------|----------------------------------------------
-7  | 응용(Application) 계층 | Message  | software  | HTTP, DHCP, DNS, FTP, SMTP          | 사용자가 네트워크에 접근할 수 있는 계층이다.
-6  | 표현(Presentation) 계층 | Message | software  | JPEG, MPEG, SMB, AFP  | 운영체제의 한 부분으로 입력 또는 출력되는 데이터를 하나의 표현 형태로 변환한다.
-5  | 세션(Session) 계층  | Message | software | SSH, TLS    | 통신 세션을 구성하는 계층으로, port연결이라고도 한다.
-4  | 전송(Transport) 계층 | Segment(TCP} | Gateway( 게이트 웨이) | TCP, UDP    | 패킷들 전송이 유효한지 확인 후, 전송 실패한 패킷들 다시 전송(오류제어, 흐름제어)
+7  | 응용(Application) 계층 | Message  | software  | HTTP, DHCP, DNS, FTP, SMTP          | 사용자가 네트워크에 접근할 수 있는 계층
+6  | 표현(Presentation) 계층 | Message | software  | JPEG, MPEG, SMB, AFP  | 운영체제의 한 부분으로 입력 또는 출력되는 데이터를 하나의 표현 형태로 변환
+5  | 세션(Session) 계층  | Message | software | SSH, TLS    | 통신 세션을 구성하는 계층(port연결)
+4  | 전송(Transport) 계층 | Segment(TCP) | Gateway( 게이트 웨이) | TCP, UDP    | 패킷들 전송이 유효한지 확인 후, 전송 실패한 패킷들 다시 전송(오류제어, 흐름제어)
 3  | 네트워크(Network 계층 | Packet| Router(라우터), L3 switch |  IP주소, ICMP       |  라우팅 : 가장 중요한 기능은 데이터를 목적지까지 가장 안전하고 빠르게 전달
 2  | 데이터(Data Link) 계층 | Frame | Switch(스위치), Bridge | MAC주소, PPP       | 물리계층을 통해 송수신되는 정보의 오류와 흐름을 관리
 1  | 물리(Physical) 계층  | Bit | Hub(허브), Repeater |  Ethernet, RS-232C    | 주로 전기적 및 기계적인 특성으로 통신 케이블로 데이터를 전송(on/off)
