@@ -113,16 +113,15 @@ CMD ["nginx", "daemon off; "]
 2. Image : 어플리케이션을 실행하기 위한 모든 환경 setting (코드, 런타임환경, 시스템툴, 시스템 라이브러리 등)
 3. Container : 컨테이너 안에서 이미지 동작, 이미지 이용해 어플리케이션 구동
 
+## docker-compose
+- 단일 서버에서 여러 컨테이너를 프로젝트 단위로 묶어서 관리할 수 있는 툴
+- 각 어플리케이션에 Dockerfile 정의 후, 서비스들을 'docker-compose.yml'에 설정
+- 컨테이너의 수평 확장
 
 ### Docker Compose 구성요소
 - 프로젝트(Project) : 서비스 컨테이너 묶음
 - 서비스(Service) : 컨테이너 관리 단위
 - 컨테이너(Container) : 서비스 통해 컨테이너 관리(접속)
-
-## docker-compose
-- 단일 서버에서 여러 컨테이너를 프로젝트 단위로 묶어서 관리할 수 있는 툴
-- 각 어플리케이션에 Dockerfile 정의 후, 서비스들을 'docker-compose.yml'에 설정
-- 컨테이너의 수평 확장
 
 - 'docker-compose.yml' 예시
 ```
@@ -169,5 +168,4 @@ $ docker-compose down
 - [가장 쉽게 배우는 도커](https://www.yalco.kr/36_docker/)
 - [도커 한방에 정리_드림코딩by엘리](https://youtu.be/LXJhA3VWXFA?t=526)
 - [도커/쿠버네티스를 활용한 컨테이너 개발 실전 입문_위키북스](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9791158391447&orderClick=JAH)
-- [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
