@@ -113,17 +113,32 @@ CMD ["nginx", "daemon off; "]
 2. Image : 어플리케이션을 실행하기 위한 모든 환경 setting (코드, 런타임환경, 시스템툴, 시스템 라이브러리 등)
 3. Container : 컨테이너 안에서 이미지 동작, 이미지 이용해 어플리케이션 구동
 
+
 ## docker-compose
 - 단일 서버에서 여러 컨테이너를 프로젝트 단위로 묶어서 관리할 수 있는 툴
 - 각 어플리케이션에 Dockerfile 정의 후, 서비스들을 'docker-compose.yml'에 설정
 - 컨테이너의 수평 확장
 
-### Docker Compose 구성요소
+#### Docker Compose 구성요소
 - 프로젝트(Project) : 서비스 컨테이너 묶음
 - 서비스(Service) : 컨테이너 관리 단위
 - 컨테이너(Container) : 서비스 통해 컨테이너 관리(접속)
 
-- 'docker-compose.yml' 예시
+#### docker-compose 설치
+```
+DOCKER_COMPOSE_VERSION=v2.2.3
+
+sudo curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+docker-compose version
+
+```
+
+#### docker-compose.yml 예시
 ```
 version: "3.9"  # 버전 정의
 services:       # 서비스들 정의
@@ -147,7 +162,10 @@ volumes:
 ### 명령어
 ```
 $ docker-compose up -d
-# 실행 명령어
+# 실행 명령어 (-d옵션은 백그라운드 실행)
+
+$ docker-compose up -d --scale was=3
+# 실행 명령어 was(서비스명)=3(확장할 개수)
 
 $ docker-compose ls
 # 실행중인 프로젝트 목록 확인
@@ -157,11 +175,12 @@ $ docker-compose stop
 # docker ps -a 하면 보임
 
 $ docker-compose down
-# docker ps -a 해도 안보임
+# 삭제 (docker ps -a 해도 안보임)
 
 ```
 - 'docker-compose.yml' 파일이 있는 디렉터리에서 실행
 - 'docker-compose.yml' 파일에 있는 모든 어플리케이션의 컨테이너가 동시에 실행됨
+- 컨테이너 이름이 '프로젝트명-서비스명-숫자'
 
 ## 참고
 - [도커 레퍼런스](https://docs.docker.com/engine/reference/run/)
