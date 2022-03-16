@@ -1,6 +1,6 @@
 ## 목차
-- [Chapter5. 메일과 인터넷](Chapter5._메일과_인터넷)
-  - [Proxy 서버](Proxy_서버)
+- [Chapter5. 메일과 인터넷](#Chapter5.-메일과-인터넷)
+  - [Proxy 서버](#Proxy-서버)
 
 
 ## Chapter5. 메일과 인터넷
