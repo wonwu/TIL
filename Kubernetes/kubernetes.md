@@ -255,7 +255,48 @@ subsets:
 
 
 ## Ingress
+인그레스 = 클러스터 외부에서 클러스터 내부 서비스로 HTTP와 HTTPS 경로를 노출
+- 클러스터 내의 서비스에 대한 외부 접근을 관리하는 API 오브젝트이며, 일반적으로 HTTP를 관리
+- HTTP(S)와 같은 경로 기반으로 서비스를 전환하는 L7 레벨의 제어를 위한 리소스
+- 인그레스 리소스가 작동하려면, 클러스터는 실행 중인 '인그레스 컨트롤러'가 반드시 필요
 
+### TLS
+- TLS 개인 키 및 인증서가 포함된 시크릿(Secret)을 지정해서 인그레스를 보호 가능
+- TLS secret에는 tls.crt 와 tls.key 라는 이름의 키가 있어야 하고, 여기에는 TLS에 사용할 인증서와 개인 키가 있음
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: testsecret-tls
+  namespace: default
+data:
+  tls.crt: base64 encoded cert
+  tls.key: base64 encoded key
+type: kubernetes.io/tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tls-example-ingress
+spec:
+  tls:
+  - hosts:
+      - https-example.foo.com
+    secretName: testsecret-tls
+  rules:
+  - host: https-example.foo.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: service1
+            port:
+              number: 80
+```
+- kubectl get ingress
 
 
 ## PV PVC
