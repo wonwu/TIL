@@ -70,3 +70,85 @@ kubectl run --help
 ```
 
 # 2. Scheduling
+
+## Manual Scheduling
+```
+# pod 삭제 후 다시 생성
+kubectl replace --force -f nginx.yaml
+
+```
+
+## Labels & Selectors
+```
+# use selectors to filter 
+kubectl get pods --selector env=dev
+
+# 특정 selector의 모든 object 보기
+kubectl get all --selector env=prod
+
+# 2개 이상의 labels 갖는 object 보기
+kubectl get all --selector env=prod,bu=finance,tier=frontend
+```
+
+##  Taints & Tolerations
+```
+# 특정 node에 Taints 확인
+kubectl describe node node01 | grep -i taints
+kubectl describe node node01 | grep Taints
+
+```
+
+## Node Affinity
+```
+# node에 특정 pod 할당
+kubectl edit deployment blue
+
+# 복사한 코드 줄 맞추기
+# shift + v : 한줄 선택 -> 화살표 아래로 블록 선택
+# shift + . : 자동 줄맞춤
+```
+
+## Resource Limits
+```
+# 파드가 실행되고 있는 경우 리소스 수정x
+# 수정된 파일은 다른 파일로 저장됨
+kubectl replace --force -f /tmp/kubectl-edit-213647675.yaml
+
+```
+
+## DaemonSets
+```
+# 데몬셋은 노드 개수만큼 생성됨
+# 노드 개수만큼 pod가 유지됨
+
+kubectl get ds --all-namespaces
+
+# Deploy a DaemonSet
+kubectl create deployment elasticsearch --image=k8s.gcr.io/fluentd-elasticsearch -n kube-system --dry-run=client -o yaml > fluentd.yaml
+# remove the replicas, strategy and status 
+# change the kind from Deployment -> DaemonSet
+kubectl create -f fluentd.yaml
+```
+
+## Static PODs
+```
+# staticPod config
+cat /var/lib/kubelet/config.yaml
+
+# staticPodPath 찾기
+ls /etc/kubernetes/manifests 
+
+# staticPod 생성
+kubectl run --restart=Never --image=busybox static-busybox --dry-run=client -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
+
+```
+
+## Multiple Schedulers
+```
+# 
+
+```
+
+# 3. Logging & Monitoring
+
+
