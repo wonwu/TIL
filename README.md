@@ -11,6 +11,7 @@
 
 ## Kubernetes
 * [k8s](https://github.com/wonwu/TIL/blob/main/Kubernetes/kubernetes.md)
+* [cka](https://github.com/wonwu/TIL/blob/main/Kubernetes/CKA.md)
 
 ## Server
 * [Server](https://github.com/wonwu/TIL/blob/main/Server/server.md)
