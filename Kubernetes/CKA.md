@@ -151,4 +151,18 @@ kubectl run --restart=Never --image=busybox static-busybox --dry-run=client -o y
 
 # 3. Logging & Monitoring
 
+## Monitor Cluster Components
+```
+# 
+
+```
+
+
+## Managing Application Logs
+```
+# 
+
+```
+
+
 
