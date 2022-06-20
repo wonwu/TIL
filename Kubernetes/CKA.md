@@ -153,16 +153,40 @@ kubectl run --restart=Never --image=busybox static-busybox --dry-run=client -o y
 
 ## Monitor Cluster Components
 ```
-# 
+kubectl top node
+
+kubectl top node --sort-by='cpu'
 
 ```
 
 
 ## Managing Application Logs
 ```
-# 
+kubectl logs podname
+
+#  -c, --container='': Print the logs of this container
+kubectl logs webapp-2 -c simple-webapp
 
 ```
 
 
+# 5. Cluster Maintenance
+
+## OS Upgrades
+```
+
+
+```
+
+## Cluster Upgrade Process
+```
+
+
+```
+
+## Backup & Restore Methods
+```
+
+
+```
 
