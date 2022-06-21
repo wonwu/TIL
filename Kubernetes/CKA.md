@@ -169,6 +169,84 @@ kubectl logs webapp-2 -c simple-webapp
 
 ```
 
+# 4. Application Lifecycle Management
+
+## Updates & Rollbacks
+```
+kubectl describe deploy frontend | grep StrategyType
+
+kubectl describe deploy frontend
+# RollingUpdateStrategy:  25% max unavailable, 25% max surge
+# max unavailable = 전체 pod 중 25%씩 단계별로 업데이트
+
+# type:Recreate
+# type:RollingUpdate
+```
+
+## Commands & Arguments
+```
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+
+  name: command-demo
+
+  labels:
+
+    purpose: demonstrate-command
+
+spec:
+
+  containers:
+
+  - name: command-demo-container
+
+    image: debian
+
+    command: ["printenv"]
+
+    args: ["HOSTNAME", "KUBERNETES_PORT"]
+
+  restartPolicy: OnFailure
+
+```
+```
+# ENTRYPOINT in the Dockerfile can be overridden by the command in the pod definition.
+```
+
+## Env Variables
+```
+kubectl edit pod webapp
+# 변경되지 않아도 변경된 버전의 임시 파일이 저장됨
+# 그 파일로 pod 생성 
+
+kubectl replace --force -f /tmp/changedpod.yaml
+
+# Create a new ConfigMap for the webapp-color POD. Use the spec given below.
+kubectl create configmap webapp-config-map --from-literal=APP_COLOR=darkblue
+```
+
+## Secrets
+```
+kubectl create secret generic db-secret --from-literal=DB_Host=sql01
+
+```
+
+## Multi Container PODs
+```
+
+
+```
+
+## Init Containers
+```
+
+
+```
+
+
 
 # 5. Cluster Maintenance
 
